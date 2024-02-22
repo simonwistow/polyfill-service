@@ -3,6 +3,11 @@
 set -euo pipefail
 set -x
 
-c-at-e-file-server local --toml fastly.toml --name "polyfill-library" -- "./polyfill-libraries/"
-
-# c-at-e-file-server upload --token "$(fastly profile token --quiet polyfill)" --name "polyfill-library" -- "./polyfill-libraries/"
+if [[ "prod" != "${1-}" ]];
+then
+  echo "Loading polyfill libraries locally";
+  compute-file-server-cli local --toml fastly.toml --name "polyfill-library" -- "./polyfill-libraries/";
+else
+  echo "Loading polyfill libraries remotely";
+  compute-file-server-cli upload --token "$(fastly profile token --quiet)" --name "polyfill-library" -- "./polyfill-libraries/"
+fi
