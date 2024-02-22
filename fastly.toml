@@ -1,4 +1,4 @@
-# This file describes a Fastly Compute@Edge package. To learn more visit:
+# This file describes a Fastly Compute package. To learn more visit:
 # https://developer.fastly.com/reference/fastly-toml/
 
 authors = ["jchampion@fastly.com"]
@@ -7,12 +7,11 @@ language = "other"
 manifest_version = 3
 name = "polyfill-service-rs"
 # dev
-service_id = "06FSzBcnfHpOjSqXwzOxvy"
+service_id = "SwocX8EOEFupaPvw9Atx04"
 # qa
-# service_id = "4cUBTkiSVlJnR8JPnLvt85"
+# service_id = ""
 # prod
-# service_id = "3AfcolkTD4KUfkrKGIYZ4T"
+# service_id = "Pg4HC9N6hckSWumOF1oEl1"
 
 [scripts]
   build = "cargo build --bin service --release --target wasm32-wasi --color always -p service && cp target/wasm32-wasi/release/service.wasm bin/main.wasm"
-
