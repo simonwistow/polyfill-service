@@ -9,5 +9,5 @@ then
   compute-file-server-cli local --toml fastly.toml --name "polyfill-library" -- "./polyfill-libraries/";
 else
   echo "Loading polyfill libraries remotely";
-  compute-file-server-cli upload --token "$(fastly profile token --quiet)" --name "polyfill-library" -- "./polyfill-libraries/"
+  compute-file-server-cli upload --token "$(fastly profile token --quiet polyfill)" --name "polyfill-library" -- "./polyfill-libraries/"
 fi
