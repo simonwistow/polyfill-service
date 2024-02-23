@@ -198,28 +198,6 @@ fn main() {
                 .with_header("surrogate-key", "website")
                 .send_to_client();
         }
-        "/v3/terms" => {
-            Response::from_body(terms())
-                .with_content_type(fastly::mime::TEXT_HTML_UTF_8)
-                .with_header("x-compress-hint", "on")
-                .with_header("surrogate-key", "website")
-                .with_header(
-                    "Cache-Control",
-                    "max-age=86400, stale-while-revalidate=86400, stale-if-error=86400",
-                )
-                .send_to_client();
-        }
-        "/v3/privacy-policy" => {
-            Response::from_body(privacy())
-                .with_content_type(fastly::mime::TEXT_HTML_UTF_8)
-                .with_header("x-compress-hint", "on")
-                .with_header("surrogate-key", "website")
-                .with_header(
-                    "Cache-Control",
-                    "max-age=86400, stale-while-revalidate=86400, stale-if-error=86400",
-                )
-                .send_to_client();
-        }
         "/robots.txt" => {
             Response::from_status(200)
                 .with_body_text_plain("User-agent: *\nDisallow:")
