@@ -10,7 +10,7 @@ mod polyfill;
 use crate::polyfill::polyfill;
 use fastly::http::{header, Method, StatusCode};
 use fastly::{Request, Response, SecretStore};
-use pages::{home, privacy, terms};
+use pages::{home};
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::io::Read;
