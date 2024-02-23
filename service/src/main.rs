@@ -8,7 +8,7 @@ mod pages;
 mod polyfill;
 
 use crate::polyfill::polyfill;
-use fastly::http::{header, Method, StatusCode};
+use fastly::http::{header, Method, StatusCode, Url};
 use fastly::{Request, Response, SecretStore};
 use pages::{home};
 use serde::Deserialize;
@@ -109,6 +109,20 @@ fn stats() -> Option<Stats> {
     }
 }
 
+fn base_url(url: &Url) -> String {
+    let mut host = "";
+    if let Some(host_tmp) = url.host_str() {
+        host = host_tmp;
+    };
+
+    let mut port: String = "".to_owned();
+    if let Some(port_tmp) = url.port() {
+      port.push_str(":");
+      port.push_str(&port_tmp.to_string());
+    };
+    return [url.scheme(), "://", host, &port].join("");
+}
+
 fn main() {
     fastly::init();
     RequestLimits::set_max_header_value_bytes(Some(15_000));
@@ -119,6 +133,7 @@ fn main() {
     //     std::env::var("FASTLY_SERVICE_VERSION").unwrap_or_else(|_| String::new())
     // );
     let url = req.get_url_str().to_owned();
+    let base = base_url(req.get_url());
     // println!("url: {}", url);
     std::panic::set_hook(Box::new(move |info| {
         eprintln!(
@@ -158,7 +173,7 @@ fn main() {
             // .with_header("Location", "/v3/")
             // .with_header("Cache-Control", "public, s-maxage=31536000, max-age=604800, stale-while-revalidate=604800, stale-if-error=604800, immutable").send_to_client();
 
-            Response::from_body(home(stats(), DAYS))
+            Response::from_body(home(base, stats(), DAYS))
                 .with_content_type(fastly::mime::TEXT_HTML_UTF_8)
                 .with_header("x-compress-hint", "on")
                 // Enables the cross-site scripting filter built into most modern web browsers.

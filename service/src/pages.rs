@@ -220,7 +220,7 @@ fn humanize(num: u64) -> String {
     }
 }
 
-pub(crate) fn home(stats: Option<Stats>, days: u32) -> String {
+pub(crate) fn home(base: String, stats: Option<Stats>, days: u32) -> String {
     let data: PolyfillData =
         serde_json::from_str(include_str!("json/library-3.111.0.json")).unwrap();
     let mut aliases: IndexMap<String, Vec<String>> = data.polyfill_aliases.into_iter().collect();
@@ -275,7 +275,7 @@ pub(crate) fn home(stats: Option<Stats>, days: u32) -> String {
                     output {
                         pre {
                             code id="polyfill-bundle-url" {
-                                "https://polyfill.io/v3/polyfill.min.js"
+                                (base) "/v3/polyfill.min.js"
                             }
                         }
                     }
