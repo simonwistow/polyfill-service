@@ -31,10 +31,10 @@ fn layout(content: Markup) -> Markup {
             head {
                 meta charset="UTF-8";
                 meta http-equiv="x-ua-compatible" content="ie=edge";
-                meta name="description" content="Polyfill.io is a service which accepts a request for a set of browser features and returns only the polyfills that are needed by the requesting browser.";
+                meta name="description" content="Fastly Polyfill is a service which accepts a request for a set of browser features and returns only the polyfills that are needed by the requesting browser.";
                 meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no";
-                title {"Polyfill.io";}
-                link rel="icon" type="image/svg" href="/img/logo.svg";
+                title {"Fastly Polyfill";}
+                link rel="icon" href="/img/fastly-favicon.svg";
                 style {(stylee);};
             }
             body {
@@ -42,23 +42,19 @@ fn layout(content: Markup) -> Markup {
                     ul {
                         li {
                             a href="/" aria-label="Back home" {
-
-                                svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 326 326" height="56px" {
-                                    path fill="#ccc" d="M0 0h72.4v226.8H0zm84.6 0H157v226.8H84.7zm84.6 0h72.5v226.8h-72.5zM254 0h72.3v226.8H254z"{};
-                                    path fill="#0A95C7" d="M0 0h72.4v139H0zm84.6 0H157v92.6H84.7zm84.6 0h72.5v46.3h-72.5z"{};
-                                }
+                                img focusable="false" style="height: 56px;" src="/img/fastly.svg";
                             }
                         }
-                        li {  "Polyfill.io" }
+                        li {  "Fastly Polyfill" }
                     }
                     ul {
                         li {
-                            a href="/v3/terms" class="secondary" {
+                            a href="https://www.fastly.com/terms/" class="secondary" {
                                 "Terms & Conditions"
                             }
                         }
                         li{
-                            a href="/v3/privacy-policy" class="secondary" {
+                            a href="https://www.fastly.com/privacy/" class="secondary" {
                                 "Privacy Policy"
                             }
                         }
@@ -367,199 +363,6 @@ pub(crate) fn home(stats: Option<Stats>, days: u32) -> String {
         }
         script {
             (Raw(include_str!("builder.js").to_string()));
-        }
-    }).into_string()
-}
-
-pub(crate) fn terms() -> String {
-    layout(html! {
-        header {
-            div class="container" {
-                h1 {"Terms and Conditions";}
-            }
-        }
-        main class="container" {
-            h2 {"Who we are and how to contact us"}
-            p {
-                a href="https://polyfill.io/" target="_self" rel="nofollow noopener"{"Polyfill.io"}
-                " is operated as a community service by the Polyfill.io maintainers (“we”, “us”)."
-            }
-
-            h2 {"By using Polyfill.io you agree to our terms"}
-            p{"These terms apply to “"em{"Polyfill.io"}"”, which means:"}
-            ul {
-                li {"the Polyfill.io website (“"em{"Site"}"”); and/or"}
-                li {"the public instance of the Polyfill Service made available by us, as described on the Site."}
-            }
-            p {
-                "By using Polyfill.io you confirm that you accept these terms of use and that you agree to comply with them. If you do not agree to these terms, you must not use Polyfill.io."
-            }
-            p {
-                "We recommend that you print or save a copy of these terms for future reference. "
-                em {
-                    "Please note that these terms contain provisions which limit or exclude our liability to you, in particular as set out in the section headed “Our responsibility for loss or damage suffered by you”."
-                }
-            }
-            h2 {
-                "There are other terms that may apply to you"
-            }
-            p {
-                "These terms of use refer to the following additional terms, which also apply to your use of Polyfill.io:"
-            }
-            ul {
-                li {
-                    "The "
-                    a href="/v3/privacy-policy" {"Polyfill.io privacy policy"}
-                    ", which sets out the terms on which we process any personal data we collect from you or as a result of your use of Polyfill.io (including our logging of use of Polyfill.io). If you do not agree to the terms of that privacy policy then you must not use Polyfill.io, and you should consider hosting the "
-                    a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener" {"Polyfill Service code"}
-                    " yourself."
-                }
-            }
-            h2 {
-                "Polyfill.io are provided as-is and without any SLA"
-            }
-            p {"Polyfill.io is made available free of charge."}
-            p {"We do not guarantee that Polyfill.io, or any content on them, will always be available or be uninterrupted. We may suspend or withdraw or restrict the availability of all or any part of Polyfill.io for business and operational reasons."}
-            p {"We do not provide any service level agreement or any other performance commitments for Polyfill.io. We are not able to participate in any technical due diligence or other procurement process that your organisation may have."}
-            p {
-                "If you require an SLA or guaranteed levels of resilience for Polyfill.io, then you are free to obtain your own copy of the Polyfill Service code from our "
-                a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener"{"GitHub repository"}
-                ". The Polyfill Service code is licensed under the MIT License. You can then make your own arrangements for hosting."
-            }
-            h2 {"Do not rely on information on this site"}
-            p {"The content on the Site is provided for general information only. It is not intended to amount to advice on which you should rely."}
-            p {"Although we make reasonable efforts to update the information on Polyfill.io, we make no representations, warranties or guarantees, whether express or implied, that the content on Polyfill.io is accurate, complete or up to date."}
-            h2 {"Our responsibility for loss or damage suffered by you"}
-            p {em {"We do not exclude or limit in any way our liability to you where it would be unlawful to do so. This includes liability for death or personal injury caused by our negligence or the negligence of our employees, agents or subcontractors and for fraud or fraudulent misrepresentation."}}
-            p {em {"We exclude all implied conditions, warranties, representations or other terms that may apply to Polyfill.io or any content on them."}}
-            p {em {"We will not be liable to you for any loss or damage, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, even if foreseeable, arising under or in connection with:"}}
-            ul {
-                li {em {"use of, or inability to use, Polyfill.io; or"}}
-                li {em {"use of or reliance on any content displayed on Polyfill.io."}}
-            }
-            p {em {"In particular, we will not be liable for:"}}
-            ul {
-                li {em{"loss of profits, sales, business, or revenue;"}}
-                li {em{"business interruption;"}}
-                li {em{"loss of anticipated savings;"}}
-                li {em{"loss of business opportunity, goodwill or reputation; or"}}
-                li {em{"any indirect or consequential loss or damage."}}
-            }
-            p {
-                em {
-                    "By using Polyfill.io, you agree that the above exclusions of liability are reasonable. You accept that it is always possible for you to host your own copy of the "
-                    a href="https://github.com/JakeChampion/polyfill-service" target="_self" rel="nofollow noopener"{"Polyfill Service code"}
-                    ", and that your use of Polyfill.io is therefore entirely at your own risk."
-                }
-            }
-            h2 {"We are not responsible for viruses and you must not introduce them"}
-            p {"We do not guarantee that Polyfill.io will be secure or free from bugs or viruses."}
-            p {"You are responsible for configuring your information technology, computer programs and platform to access Polyfill.io. You should use your own virus protection software."}
-            p {"You must not misuse Polyfill.io by knowingly introducing viruses, trojans, worms, logic bombs or other material that is malicious or technologically harmful. You must not attempt to gain unauthorised access to Polyfill.io, the server on which Polyfill.io are stored or any server, computer or database connected to Polyfill.io. You must not attack Polyfill.io via a denial-of-service attack or a distributed denial-of service attack. By breaching this provision, you would commit a criminal offence under the Computer Misuse Act 1990. We will report any such breach to the relevant law enforcement authorities and we will co-operate with those authorities by disclosing your identity to them. In the event of such a breach, your right to use Polyfill.io will cease immediately."}
-            h2 {"We may make changes to these terms"}
-            p {"We amend these terms from time to time. You should check these terms regularly to ensure you understand the terms that apply at that time."}
-            h2 {"We may make changes to Polyfill.io"}
-            p {"We may update and change Polyfill.io from time to time. We will aim to post details of the most significant changes on the Site."}
-            h2 {"Which country’s laws apply to any dispute?"}
-            p {"These terms of use, their subject matter and their formation (and any non-contractual disputes or claims) aregoverned by English law. You and we both agree to the exclusive jurisdiction of the courts of England and Wales."}
-        }
-    }).into_string()
-}
-
-pub(crate) fn privacy() -> String {
-    layout(html! {
-        header {
-            div class="container" {
-                h1 {"Privacy Policy";}
-            }
-        }
-        main class="container" {
-            p {
-                "This Privacy Policy applies to the "
-                a href="https://polyfill.io/"{"Polyfill.io"}
-                " website (“<em>Site</em>”) and the public instance of the Polyfill Service made available by us, as described on the Site (“<em>Service</em>”). This Site and the Service are referred to together as “"
-                a href="https://polyfill.io/"{em{"Polyfill.io"}}
-                "”."
-            }
-            p {"We collect and use personal information in different ways for the Site and the Service. This Privacy Policy sets out details of these different ways in which we collect and use information."}
-            h2 {
-                strong{"The Service:"}
-                " What information do we collect from the Service?"
-            }
-            p {"The Service is a hosted instance of software known as Polyfill Service. Polyfill Service provides snippets of code, called “polyfills”, that allows websites operated by FT and by others to provide a consistent experience across different browsers. When you load a web page which uses Polyfill Service, your browser will download any polyfills required in order to present the web page successfully in your browser."}
-            p {"In order to provide the polyfills, the Service receives certain technical information from your browser including:"}
-            ul {
-                li {"browser details;"}
-                li {"connection details, such as your IP address, which can identify your approximate location and/or name of your ISP;"}
-                li {"the URL of the web page which has made the request to the Service. "}
-            }
-            p {"We use the above information to determine which polyfills are required by your browser. We do not retain this information."}
-            p {"We may retain the following information:"}
-            ul {
-                li {"obfuscated IP addresses, this is an IP address with the last 3 digits removed or masked in order to anonymise it;"}
-                li {"the domain of the web page which has made the request to the Service;"}
-                li {"the user agent string for your browser;"}
-                li {"the set of polyfills that were requested by the web page;"}
-                li {"the URL and HTTP method used to access the service."}
-            }
-            p {"The information we retain cannot identify you. We retain it in order to identify which websites are using the Service and whether any websites are abusing the Service."}
-            h2 {
-                strong{"The Site:"}
-                " What information do we collect from the users of this Site?"
-            }
-            p {"The information we collect about you if you are browsing this Site may include the following details relating to your visit to the Site:"}
-            ul {
-                li {"browser details;"}
-                li {"time and date of access;"}
-                li {"usage statistics, for example frequency;"}
-                li {"connection details, for example which version of http was used and how long the connection took complete;"}
-            }
-            p {"The information we retain cannot identify you.  We collect the above information about users of the Site for the following reasons:"}
-            ul {
-                li{"to help monitor and improve the Site;"}
-                li{"to help strategic development;"}
-                li{"to monitor compliance with the Polyfill.io Terms and Conditions; and"}
-                li{"to audit usage of the Site and demonstrate usage to third parties."}
-            }
-            h2 {"Lawful basis for processing"}
-            p {"We only process personal information where we have a lawful basis for doing so. We rely on legitimate business interests to process data relating to Polyfill.io, for example to monitor compliance with the Polyfill.io Terms and Conditions. We take due care to balance our interests against your right to privacy."}
-            h2 {"Who we share your information with"}
-            p {"We may share your information with organisations that provide services on our behalf, such as those that host the Site or the Service, solely for the purposes of their providing those services to us."}
-            p {
-                "We may also disclose your information to comply with applicable laws, court orders or other valid legal processes, and to enforce or apply the "
-                a href="/v3/terms"{"Polyfill.io Terms and Conditions"}
-                " or any of our other rights."
-            }
-            h2 {"How long we retain data relating to Polyfill.io"}
-            p {"We do not retain personal data relating to the Polyfill.io service. The data that we do retain has been obfuscated or aggregated, for example, IP addresses have the last 3 digits masked once we have determined which polyfills are required by your browser. We retain this non-personal information for 30 days."}
-            h2 {"How we keep your information secure"}
-            p {"We have appropriate technical and administrative security measures in place to help ensure that individuals’ information is protected against unauthorised or accidental access, use, alteration, or loss."}
-            p {"Your personal information may be processed and stored outside the European Economic Area (EEA)."}
-            h2 {"Your rights"}
-            p {"We do not retain personal data relating to the Polyfill.io service."}
-            p {
-                "If you have any questions about the personal data processed as a result of your use of this service, please contact "
-                a href="mailto:admin@polyfill.io" {"admin@polyfill.io"}
-                "."
-            }
-            p {"You have the right to lodge a complaint with a supervisory authority. In the UK, this is the Information Commissioner’s Office (ICO)."}
-            h2 {"Where this Privacy Policy applies"}
-            p {"Polyfill.io is not intended for children under 16 years of age. We do not intentionally collect or use any information from children."}
-            p {"Polyfill.io contains links to third party websites which are not subject to this privacy policy. Websites which use the polyfills are not subject to this privacy policy. We are not responsible for third party websites’ content, use of personal information, or security practices."}
-            p {
-                "If you have a query in regards to the processing of your personal information, please contact our Data Protection Officer directly at "
-                a href="mailto:admin@polyfill.io" {"admin@polyfill.io"}
-                "."
-            }
-
-            h2{"Changes to this privacy policy"}
-            p {"This policy was reviewed on 26/06/2023 and last updated on 11/12/2023."}
-
-            p {
-                "Any changes we may make to this privacy policy will be posted on this page. If changes are significant, we may choose to indicate clearly on the "
-                a href="https://polyfill.io" {"Polyfill.io"}
-                " home page that the policy has been updated."
-            }
         }
     }).into_string()
 }
