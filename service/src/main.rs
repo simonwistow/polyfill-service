@@ -191,8 +191,15 @@ fn main() {
                 )
                 .send_to_client();
         }
-        "/img/logo.svg" => {
-            Response::from_body(include_str!("logo.svg"))
+        "/img/fastly.svg" => {
+            Response::from_body(include_str!("fastly.svg"))
+                .with_content_type(fastly::mime::IMAGE_SVG)
+                .with_header("x-compress-hint", "on")
+                .with_header("surrogate-key", "website")
+                .send_to_client();
+        }
+        "/img/fastly-favicon.svg" => {
+            Response::from_body(include_str!("fastly-favicon.svg"))
                 .with_content_type(fastly::mime::IMAGE_SVG)
                 .with_header("x-compress-hint", "on")
                 .with_header("surrogate-key", "website")
