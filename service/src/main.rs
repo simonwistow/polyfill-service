@@ -110,17 +110,15 @@ fn stats() -> Option<Stats> {
 }
 
 fn base_url(url: &Url) -> String {
-    let mut host = "";
-    if let Some(host_tmp) = url.host_str() {
-        host = host_tmp;
-    };
-
-    let mut port: String = "".to_owned();
-    if let Some(port_tmp) = url.port() {
-      port.push_str(":");
-      port.push_str(&port_tmp.to_string());
-    };
-    return [url.scheme(), "://", host, &port].join("");
+    let host = url.host_str().expect("url should always have a host");
+    match url.port() {
+        Some(port) => {
+            format!("{}://{}:{}", url.scheme(), host, &port)
+        }
+        None => {
+            format!("{}://{}", url.scheme(), host)
+        }
+    }
 }
 
 fn main() {
