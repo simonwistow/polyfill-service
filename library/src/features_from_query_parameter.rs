@@ -1,7 +1,9 @@
 use indexmap::{IndexMap, IndexSet};
+use regex::Regex;
 
 
-#[must_use] pub fn features_from_query_parameter(
+#[must_use]
+pub fn features_from_query_parameter(
     features_parameter: &str,
     flags_parameter: &str,
 ) -> IndexMap<String, IndexSet<String>> {
@@ -15,7 +17,9 @@ use indexmap::{IndexMap, IndexSet};
 
     for feature in features {
         // Eliminate XSS vuln
-        let safe_feature = feature.replace("*/", "");
+
+        let re = Regex::new(r"[*/]").unwrap();
+        let safe_feature = re.replace_all(feature, "").to_string();
         let mut things: Vec<&str> = safe_feature.split('|').collect();
         let name = things.remove(0);
         things.append(&mut global_flags.clone());
