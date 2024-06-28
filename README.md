@@ -1,12 +1,12 @@
 
-# [Polyfill.io][website] &middot; [![license][license-badge]][license] [![PRs Welcome][pull-requests-badge]][contributing guide]
+# [Polyfill-fastly.io][website] &middot; [![license][license-badge]][license] [![PRs Welcome][pull-requests-badge]][contributing guide]
 
-Polyfill.io is a service which makes web development less frustrating by selectively polyfilling just what the browser needs.
-Polyfill.io reads the User-Agent header of each request and returns polyfills that are suitable for the requesting browser.
+Polyfill-fastly.io is a service which makes web development less frustrating by selectively polyfilling just what the browser needs.
+Polyfill-fastly.io reads the `User-Agent` header of each request and returns polyfills that are suitable for the requesting browser.
 
 ## Documentation
 
-Polyfill.io documentation is [on the website][website].
+Documentation is [on the website][website].
 
 
 ## [Contributing][contributing guide]
@@ -27,4 +27,4 @@ Polyfill.io is licensed under the terms of the [MIT license][license]. Contribut
 [license]: ./LICENSE.md
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [pull-requests-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-[website]: https://polyfill.io
+[website]: https://polyfill-fastly.io
