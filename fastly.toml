@@ -15,3 +15,9 @@ service_id = "SwocX8EOEFupaPvw9Atx04"
 
 [scripts]
   build = "cargo build --bin service --release --target wasm32-wasi --color always -p service && cp target/wasm32-wasi/release/service.wasm bin/main.wasm"
+
+[local_server]
+  [local_server.kv_stores]
+    [[local_server.kv_stores.polyfill-library]]
+      key = "dummy"
+      data = "This is some data"
