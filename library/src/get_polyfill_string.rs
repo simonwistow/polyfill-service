@@ -388,7 +388,7 @@ pub fn get_polyfill_string(options: &PolyfillParameters, store: &str, app_versio
     }
     if !options.minify {
         explainer_comment.push(app_version_text);
-        explainer_comment.push("For detailed credits and licence information see https://github.com/JakeChampion/polyfill-service/.".to_owned());
+        explainer_comment.push("For detailed credits and licence information see https://github.com/fastly/polyfill-service/.".to_owned());
         explainer_comment.push(String::new());
         let mut features: Vec<String> = options.features.keys().map(std::clone::Clone::clone).collect();
         features.sort();
@@ -526,7 +526,7 @@ pub fn get_polyfill_string_stream(
     explainer_comment.push(app_version_text);
     if !options.minify {
         explainer_comment.push(
-            "For detailed credits and licence information see https://github.com/JakeChampion/polyfill-service/.".to_owned(),
+            "For detailed credits and licence information see https://github.com/fastly/polyfill-service/.".to_owned(),
         );
         explainer_comment.push(String::new());
         let mut features: Vec<String> = options
